@@ -1,50 +1,39 @@
-# template-for-proposals
+# Error Stack Accessor
 
-A repository template for ECMAScript proposals.
+ECMAScript Proposal, specs, and reference implementation for `Error.prototype.stack`.
 
-## Before creating a proposal
+Champions:
+ - [@ljharb](https://github.com/ljharb)
+ - [@erights](https://github.com/erights)
 
-Please ensure the following:
-  1. You have read the [process document](https://tc39.github.io/process-document/)
-  1. You have reviewed the [existing proposals](https://github.com/tc39/proposals/)
-  1. You are aware that your proposal requires being a member of TC39, or locating a TC39 delegate to “champion” your proposal
+ Spec Authors:
+ - [@ljharb](https://github.com/ljharb)
+ - [@erights](https://github.com/erights)
 
-## Create your proposal repo
+This proposal is currently [stage -1](https://github.com/tc39/proposals) of the [process](https://tc39.github.io/process-document/).
 
-Follow these steps:
-  1. Click the green [“use this template”](https://github.com/tc39/template-for-proposals/generate) button in the repo header. (Note: Do not fork this repo in GitHub's web interface, as that will later prevent transfer into the TC39 organization)
-  1. Update ecmarkup and the biblio to the latest version: `npm install --save-dev ecmarkup@latest && npm install --save-dev --save-exact @tc39/ecma262-biblio@latest`.
-  1. Go to your repo settings page:
-      1. Under “General”, under “Features”, ensure “Issues” is checked, and disable “Wiki”, and “Projects” (unless you intend to use Projects)
-      1. Under “Pull Requests”, check “Always suggest updating pull request branches” and “automatically delete head branches”
-      1. Under the “Pages” section on the left sidebar, and set the source to “deploy from a branch”, select “gh-pages” in the branch dropdown, and then ensure that “Enforce HTTPS” is checked.
-      1. Under the “Actions” section on the left sidebar, under “General”, select “Read and write permissions” under “Workflow permissions” and click “Save”
-  1. [“How to write a good explainer”][explainer] explains how to make a good first impression.
+## Rationale
 
-      > Each TC39 proposal should have a `README.md` file which explains the purpose
-      > of the proposal and its shape at a high level.
-      >
-      > ...
-      >
-      > The rest of this page can be used as a template ...
+Errors have never had a stack trace attached in the language spec — however, implementations have very consistently provided one on a property named “stack” on instantiated `Error` objects. There has long been concern about standardizing stack traces improperly - such that implementations could not claim to be fully compliant while also providing security guarantees. This proposal is an attempt to begin to standardize the intersection of existing browser behavior, in a way that addresses these security concerns.
 
-      Your explainer can point readers to the `index.html` generated from `spec.emu`
-      via markdown like
+## History
 
-      ```markdown
-      You can browse the [ecmarkup output](https://ACCOUNT.github.io/PROJECT/)
-      or browse the [source](https://github.com/ACCOUNT/PROJECT/blob/HEAD/spec.emu).
-      ```
+This proposal has been split off from the [Error Stacks](https://github.com/tc39/proposal-error-stacks) proposal, which needs a lot more work before it can overcome implementer resistance.
+In particular, it contains no net new surface API - only the long-existing `stack` property on `Error` instances.
 
-      where *ACCOUNT* and *PROJECT* are the first two path elements in your project's Github URL.
-      For example, for github.com/**tc39**/**template-for-proposals**, *ACCOUNT* is “tc39”
-      and *PROJECT* is “template-for-proposals”.
+## Setter
 
+In an ideal world, the setter would not exist, but it is included in this proposal under the assumption that it is required for web comppatibility.
+The current semantics in this proposal of the setter are:
+ 1. attempting to invoke the function with a non-object, or with no value, will throw
+ 1. invoking the function with a non-Error receiver will be a noop
+ 1. attempting to [[Set]] any kind of value on an actual Error object will use the same logic as `Iterator.prototype.constructor`, and will install an own property on the object when none already exists.
 
-## Maintain your proposal repo
+We would prefer to also throw when a non-string argument is provided, but it is much less clear that would be web-compatible.
 
-  1. Make your changes to `spec.emu` (ecmarkup uses HTML syntax, but is not HTML, so I strongly suggest not naming it “.html”)
-  1. Any commit that makes meaningful changes to the spec, should run `npm run build` to verify that the build will succeed and the output looks as expected.
-  1. Whenever you update `ecmarkup`, run `npm run build` to verify that the build will succeed and the output looks as expected.
+## Naming
 
-  [explainer]: https://github.com/tc39/how-we-work/blob/HEAD/explainer.md
+The name of `Error.prototype.stack` is set in stone - this is a defacto web reality, and will be implemented as [normative optional](https://tc39.es/ecma262/#sec-conformance).
+
+## Spec
+You can view the spec rendered as [HTML](https://tc39.es/proposal-error-stack-accessor/).

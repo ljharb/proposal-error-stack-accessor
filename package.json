@@ -1,16 +1,16 @@
 {
   "private": true,
-  "name": "template-for-proposals",
+  "name": "proposal-error-stack-accessor",
   "description": "A repository template for ECMAScript proposals.",
   "scripts": {
     "start": "npm run build-loose -- --watch",
     "build": "npm run build-loose -- --strict",
     "build-loose": "node -e 'fs.mkdirSync(\"build\", { recursive: true })' && ecmarkup --load-biblio @tc39/ecma262-biblio --verbose spec.emu build/index.html --lint-spec"
   },
-  "homepage": "https://github.com/tc39/template-for-proposals#readme",
+  "homepage": "https://github.com/tc39/proposal-error-stack-accessor#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tc39/template-for-proposals.git"
+    "url": "git+https://github.com/tc39/proposal-error-stack-accessor.git"
   },
   "license": "MIT",
   "devDependencies": {
@@ -18,6 +18,6 @@
     "ecmarkup": "^20.0.0"
   },
   "engines": {
-    "node": ">= 12"
+    "node": ">= 18"
   }
 }

@@ -4,36 +4,49 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/github.min.css">
 <script src="./spec.js"></script>
 <pre class="metadata">
-title: Proposal Title Goes Here
+title: Error Stack Accessor
 stage: -1
-contributors: Your Name(s) Here
+contributors: Jordan Harband, Mark Miller
 </pre>
 
-<emu-clause id="sec-demo-clause">
-  <h1>This is an emu-clause</h1>
-  <p>This is an algorithm:</p>
-  <emu-alg>
-    1. Let _proposal_ be *undefined*.
-    1. If IsAccepted(_proposal_) is *true*, then
-      1. Let _stage_ be *0*<sub>ℤ</sub>.
-    1. Else,
-      1. Let _stage_ be *-1*<sub>ℤ</sub>.
-    1. Return ? ToString(_stage_).
-  </emu-alg>
-</emu-clause>
+<emu-clause id="sec-fundamental-objects" number="20">
+  <h1>Fundamental Objects</h1>
 
-<emu-clause id="sec-is-accepted" type="abstract operation">
-  <h1>
-      IsAccepted (
-        _proposal_: an ECMAScript language value
-      ): a Boolean
-  </h1>
-  <dl class="header">
-    <dt>description</dt>
-    <dd>Tells you if the proposal was accepted</dd>
-  </dl>
-  <emu-alg>
-    1. If _proposal_ is not a String, or is not accepted, return *false*.
-    1. Return *true*.
-  </emu-alg>
+  <emu-clause id="sec-error-objects" number="5">
+    <h1>Error Objects</h1>
+
+    <emu-clause id="sec-properties-of-the-error-prototype-object" number="3">
+      <h1>Properties of the Error Prototype Object</h1>
+
+      <emu-clause id="sec-get-error.prototype-stack" normative-optional>
+        <h1>Error.prototype.stack</h1>
+        <p>`Error.prototype.stack` is an accessor property with attributes { [[Enumerable]]: *false*, [[Configurable]]: *true* }. The [[Get]] and [[Set]] attributes are defined as follows:</p>
+
+        <emu-clause id="sec-get-error.prototype.stack">
+          <h1>get Error.prototype.stack</h1>
+          <p>The value of the [[Get]] attribute is a built-in function that requires no arguments. It performs the following steps when called:</p>
+          <emu-alg>
+            1. Let _E_ be the *this* value.
+            1. If _E_ is not an Object, throw a *TypeError* exception.
+            1. If _E_ does not have an [[ErrorData]] internal slot, return *undefined*.
+            1. Return an implementation-defined string that represents the stack trace of _E_.
+          </emu-alg>
+        </emu-clause>
+
+        <emu-clause id="sec-set-error.prototype.stack">
+          <h1>set Error.prototype.stack</h1>
+          <p>The value of the [[Set]] attribute is a built-in function that takes an argument _v_. It performs the following steps when called:</p>
+          <emu-alg>
+            1. Let _E_ be the *this* value.
+            1. If _E_ is not an Object, throw a *TypeError* exception.
+            1. Let _numberOfArgs_ be the number of arguments passed to this function call.
+            1. If _numberOfArgs_ is 0, throw a *TypeError* exception.
+            1. If _E_ does not have an [[ErrorData]] internal slot, return *undefined*.
+            1. Perform ? SetterThatIgnoresPrototypeProperties(*this* value, %Error.prototype%, *"stack"*, _v_).
+            1. Return *undefined*.
+          </emu-alg>
+        </emu-clause>
+      </emu-clause>
+    </emu-clause>
+  </emu-clause>
 </emu-clause>
