@@ -1,17 +1,19 @@
 <!doctype html>
-<head><meta charset="utf-8"><meta property="og:image" content="https://tc39.es/ecmarkup/ecma-logo.png"><meta property="og:title" content="Proposal Title Goes Here"><meta property="og:description" content="This is an emu-clause
-  This is an algorithm:
+<head><meta charset="utf-8"><meta property="og:image" content="https://tc39.es/ecmarkup/ecma-logo.png"><meta property="og:title" content="Error Stack Accessor"><meta property="og:description" content="Fundamental Objects
+
   
-    1. Let _proposal_ be *undefined*.
-    1. If IsAccepted(_proposal_) is *true*, then
-      1. Let _stage_ be *0*ℤ.
-    1. Else,
-      1. Let _stage_ be *-1*ℤ.
-    1. Return ? ToString(_stage_).">
+    Error Objects
+
+    
+      Properties of the Error Prototype Object
+
+      
+        Error.prototype.stack
+        `Error.prototype.stack` is an accessor property with attributes { [[Enumerable]]: *false*, [[Configurable]]: *true* }. The [[Get]] and [[Set]] attributes ar">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.1/styles/base16/solarized-light.min.css"><link rel="stylesheet" href="./spec.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/github.min.css">
 <script src="./spec.js"></script>
-<title>Proposal Title Goes Here</title><script>'use strict';
+<title>Error Stack Accessor</title><script>'use strict';
 let sdoBox = {
   init() {
     this.$alternativeId = null;
@@ -1618,7 +1620,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 let sdoMap = JSON.parse(`{}`);
-let biblio = JSON.parse(`{"refsByClause":{"sec-demo-clause":["_ref_0"]},"entries":[{"type":"clause","id":"sec-demo-clause","titleHTML":"This is an emu-clause","number":"1"},{"type":"op","aoid":"IsAccepted","refId":"sec-is-accepted"},{"type":"clause","id":"sec-is-accepted","title":"IsAccepted ( proposal )","titleHTML":"IsAccepted ( <var>proposal</var> )","number":"2","referencingIds":["_ref_0"]},{"type":"clause","id":"sec-copyright-and-software-license","title":"Copyright & Software License","titleHTML":"Copyright &amp; Software License","number":"A"}]}`);
+let biblio = JSON.parse(`{"refsByClause":{"sec-set-error.prototype.stack":["_ref_0"]},"entries":[{"type":"clause","id":"sec-get-error.prototype.stack","titleHTML":"get Error.prototype.stack","number":"20.5.3.1.1"},{"type":"clause","id":"sec-set-error.prototype.stack","titleHTML":"set Error.prototype.stack","number":"20.5.3.1.2"},{"type":"clause","id":"sec-get-error.prototype-stack","titleHTML":"Error.prototype.stack","number":"20.5.3.1"},{"type":"clause","id":"sec-properties-of-the-error-prototype-object","titleHTML":"Properties of the Error Prototype Object","number":"20.5.3","referencingIds":["_ref_0"]},{"type":"clause","id":"sec-error-objects","titleHTML":"Error Objects","number":"20.5"},{"type":"clause","id":"sec-fundamental-objects","titleHTML":"Fundamental Objects","number":"20"},{"type":"clause","id":"sec-copyright-and-software-license","title":"Copyright & Software License","titleHTML":"Copyright &amp; Software License","number":"A"}]}`);
 ;let usesMultipage = false</script><style>/* IBM Plex fonts (Latin subset) have been downloaded from Google Fonts and modified to add support back in for the `zero` substitution (slashed zeroes) */
 
 /* https://fonts.googleapis.com/css2?family=IBM%20Plex%20Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap */
@@ -3295,23 +3297,40 @@ emu-intro {
 </ul></div><div id="menu-toggle"><svg xmlns="http://www.w3.org/2000/svg" style="width:100%; height:100%; stroke:currentColor" viewBox="0 0 120 120" width="54" height="54">
       <title>Menu</title>
       <path stroke-width="10" stroke-linecap="round" d="M30,60 h60  M30,30 m0,5 h60  M30,90 m0,-5 h60"></path>
-    </svg></div><div id="menu-spacer" class="menu-spacer"></div><div id="menu"><div id="menu-search"><input type="text" id="menu-search-box" placeholder="Search..."><div id="menu-search-results" class="inactive"></div></div><div id="menu-pins"><div class="menu-pane-header">Pins<button class="unpin-all">clear</button></div><ul id="menu-pins-list"></ul></div><div class="menu-pane-header">Table of Contents</div><div id="menu-toc"><ol class="toc"><li><span class="item-toggle-none"></span><a href="#sec-demo-clause" title="This is an emu-clause"><span class="secnum">1</span> This is an emu-clause</a></li><li><span class="item-toggle-none"></span><a href="#sec-is-accepted" title="IsAccepted ( proposal )"><span class="secnum">2</span> IsAccepted ( <var>proposal</var> )</a></li><li><span class="item-toggle-none"></span><a href="#sec-copyright-and-software-license" title="Copyright &amp; Software License"><span class="secnum">A</span> Copyright &amp; Software License</a></li></ol></div></div><div id="spec-container"><h1 class="version">Stage -1 Draft / December 18, 2024</h1><h1 class="title">Proposal Title Goes Here</h1>
+    </svg></div><div id="menu-spacer" class="menu-spacer"></div><div id="menu"><div id="menu-search"><input type="text" id="menu-search-box" placeholder="Search..."><div id="menu-search-results" class="inactive"></div></div><div id="menu-pins"><div class="menu-pane-header">Pins<button class="unpin-all">clear</button></div><ul id="menu-pins-list"></ul></div><div class="menu-pane-header">Table of Contents</div><div id="menu-toc"><ol class="toc"><li><span class="item-toggle">+</span><a href="#sec-fundamental-objects" title="Fundamental Objects"><span class="secnum">20</span> Fundamental Objects</a><ol class="toc"><li><span class="item-toggle">+</span><a href="#sec-error-objects" title="Error Objects"><span class="secnum">20.5</span> Error Objects</a><ol class="toc"><li><span class="item-toggle">+</span><a href="#sec-properties-of-the-error-prototype-object" title="Properties of the Error Prototype Object"><span class="secnum">20.5.3</span> Properties of the Error Prototype Object</a><ol class="toc"><li><span class="item-toggle">+</span><a href="#sec-get-error.prototype-stack" title="Error.prototype.stack"><span class="secnum">20.5.3.1</span> Error.prototype.stack</a><ol class="toc"><li><span class="item-toggle-none"></span><a href="#sec-get-error.prototype.stack" title="get Error.prototype.stack"><span class="secnum">20.5.3.1.1</span> get Error.prototype.stack</a></li><li><span class="item-toggle-none"></span><a href="#sec-set-error.prototype.stack" title="set Error.prototype.stack"><span class="secnum">20.5.3.1.2</span> set Error.prototype.stack</a></li></ol></li></ol></li></ol></li></ol></li><li><span class="item-toggle-none"></span><a href="#sec-copyright-and-software-license" title="Copyright &amp; Software License"><span class="secnum">A</span> Copyright &amp; Software License</a></li></ol></div></div><div id="spec-container"><h1 class="version">Stage -1 Draft / December 18, 2024</h1><h1 class="title">Error Stack Accessor</h1>
 
-<emu-clause id="sec-demo-clause">
-  <h1><span class="secnum">1</span> This is an emu-clause</h1>
-  <p>This is an algorithm:</p>
-  <emu-alg><ol><li>Let <var>proposal</var> be <emu-val>undefined</emu-val>.</li><li>If <emu-xref aoid="IsAccepted" id="_ref_0"><a href="#sec-is-accepted">IsAccepted</a></emu-xref>(<var>proposal</var>) is <emu-val>true</emu-val>, then<ol><li>Let <var>stage</var> be <emu-val>0</emu-val><sub>ℤ</sub>.</li></ol></li><li>Else,<ol><li>Let <var>stage</var> be <emu-val>-1</emu-val><sub>ℤ</sub>.</li></ol></li><li>Return ?&nbsp;<emu-xref aoid="ToString"><a href="https://tc39.es/ecma262/#sec-tostring">ToString</a></emu-xref>(<var>stage</var>).</li></ol></emu-alg>
-</emu-clause>
+<emu-clause id="sec-fundamental-objects" number="20">
+  <h1><span class="secnum">20</span> Fundamental Objects</h1>
 
-<emu-clause id="sec-is-accepted" type="abstract operation" aoid="IsAccepted">
-  <h1><span class="secnum">2</span> IsAccepted ( <var>proposal</var> )</h1>
-  <p>The abstract operation IsAccepted takes argument <var>proposal</var> (an <emu-xref href="#sec-ecmascript-language-types"><a href="https://tc39.es/ecma262/#sec-ecmascript-language-types">ECMAScript language value</a></emu-xref>) and returns a Boolean. Tells you if the proposal was accepted It performs the following steps when called:</p>
-  <emu-alg><ol><li>If <var>proposal</var> <emu-xref href="#sec-ecmascript-language-types-string-type"><a href="https://tc39.es/ecma262/#sec-ecmascript-language-types-string-type">is not a String</a></emu-xref>, or is not accepted, return <emu-val>false</emu-val>.</li><li>Return <emu-val>true</emu-val>.</li></ol></emu-alg>
+  <emu-clause id="sec-error-objects" number="5">
+    <h1><span class="secnum">20.5</span> Error Objects</h1>
+
+    <emu-clause id="sec-properties-of-the-error-prototype-object" number="3">
+      <h1><span class="secnum">20.5.3</span> Properties of the Error Prototype Object</h1>
+
+      <emu-clause id="sec-get-error.prototype-stack" normative-optional=""><div class="attributes-tag"><emu-xref href="#sec-conformance"><a href="https://tc39.es/ecma262/#sec-conformance">Normative Optional</a></emu-xref></div>
+        <h1><span class="secnum">20.5.3.1</span> Error.prototype.stack</h1>
+        <p><code>Error.prototype.stack</code> is an <emu-xref href="#sec-object-type"><a href="https://tc39.es/ecma262/#sec-object-type">accessor property</a></emu-xref> with attributes { <var class="field">[[Enumerable]]</var>: <emu-val>false</emu-val>, <var class="field">[[Configurable]]</var>: <emu-val>true</emu-val> }. The <var class="field">[[Get]]</var> and <var class="field">[[Set]]</var> attributes are defined as follows:</p>
+
+        <emu-clause id="sec-get-error.prototype.stack">
+          <h1><span class="secnum">20.5.3.1.1</span> get Error.prototype.stack</h1>
+          <p>The value of the <var class="field">[[Get]]</var> attribute is a built-in function that requires no arguments. It performs the following steps when called:</p>
+          <emu-alg><ol><li>Let <var>E</var> be the <emu-val>this</emu-val> value.</li><li>If <var>E</var> <emu-xref href="#sec-object-type"><a href="https://tc39.es/ecma262/#sec-object-type">is not an Object</a></emu-xref>, throw a <emu-val>TypeError</emu-val> exception.</li><li>If <var>E</var> does not have an <var class="field">[[ErrorData]]</var> internal slot, return <emu-val>undefined</emu-val>.</li><li>Return an <emu-xref href="#implementation-defined"><a href="https://tc39.es/ecma262/#implementation-defined">implementation-defined</a></emu-xref> string that represents the stack trace of <var>E</var>.</li></ol></emu-alg>
+        </emu-clause>
+
+        <emu-clause id="sec-set-error.prototype.stack">
+          <h1><span class="secnum">20.5.3.1.2</span> set Error.prototype.stack</h1>
+          <p>The value of the <var class="field">[[Set]]</var> attribute is a built-in function that takes an argument <var>v</var>. It performs the following steps when called:</p>
+          <emu-alg><ol><li>Let <var>E</var> be the <emu-val>this</emu-val> value.</li><li>If <var>E</var> <emu-xref href="#sec-object-type"><a href="https://tc39.es/ecma262/#sec-object-type">is not an Object</a></emu-xref>, throw a <emu-val>TypeError</emu-val> exception.</li><li>Let <var>numberOfArgs</var> be the number of arguments passed to this function call.</li><li>If <var>numberOfArgs</var> is 0, throw a <emu-val>TypeError</emu-val> exception.</li><li>If <var>E</var> does not have an <var class="field">[[ErrorData]]</var> internal slot, return <emu-val>undefined</emu-val>.</li><li>Perform ?&nbsp;<emu-xref aoid="SetterThatIgnoresPrototypeProperties"><a href="https://tc39.es/ecma262/#sec-SetterThatIgnoresPrototypeProperties">SetterThatIgnoresPrototypeProperties</a></emu-xref>(<emu-val>this</emu-val> value, <emu-xref href="#sec-properties-of-the-error-prototype-object" id="_ref_0"><a href="#sec-properties-of-the-error-prototype-object">%Error.prototype%</a></emu-xref>, <emu-val>"stack"</emu-val>, <var>v</var>).</li><li>Return <emu-val>undefined</emu-val>.</li></ol></emu-alg>
+        </emu-clause>
+      </emu-clause>
+    </emu-clause>
+  </emu-clause>
 </emu-clause><emu-annex id="sec-copyright-and-software-license">
       <h1><span class="secnum">A</span> Copyright &amp; Software License</h1>
       
       <h2>Copyright Notice</h2>
-      <p>© 2024 Your Name(s) Here</p>
+      <p>© 2024 Jordan Harband, Mark Miller</p>
 
       <h2>Software License</h2>
       <p>All Software contained in this document ("Software") is protected by copyright and is being made available under the "BSD License", included below. This Software may be subject to third party rights (rights from parties other than Ecma International), including patent rights, and no licenses under such third party rights are granted under this license even if the third party concerned is a member of Ecma International. SEE THE ECMA CODE OF CONDUCT IN PATENT MATTERS AVAILABLE AT <a href="https://ecma-international.org/memento/codeofconduct.htm">https://ecma-international.org/memento/codeofconduct.htm</a> FOR INFORMATION REGARDING THE LICENSING OF PATENT CLAIMS THAT ARE REQUIRED TO IMPLEMENT ECMA INTERNATIONAL STANDARDS.</p>
