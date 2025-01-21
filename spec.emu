@@ -18,7 +18,7 @@ contributors: Jordan Harband, Mark Miller
     <emu-clause id="sec-properties-of-the-error-prototype-object" number="3">
       <h1>Properties of the Error Prototype Object</h1>
 
-      <emu-clause id="sec-get-error.prototype-stack" normative-optional>
+      <emu-clause id="sec-get-error.prototype-stack">
         <h1>Error.prototype.stack</h1>
         <p>`Error.prototype.stack` is an accessor property with attributes { [[Enumerable]]: *false*, [[Configurable]]: *true* }. The [[Get]] and [[Set]] attributes are defined as follows:</p>
 
