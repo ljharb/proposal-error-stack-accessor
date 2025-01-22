@@ -33,7 +33,7 @@ We would prefer to also throw when a non-string argument is provided, but it is 
 
 ## Naming
 
-The name of `Error.prototype.stack` is set in stone - this is a defacto web reality, and will be implemented as [normative optional](https://tc39.es/ecma262/#sec-conformance).
+The name of `Error.prototype.stack` is set in stone - this is a defacto web reality.
 
 ## Spec
 You can view the spec rendered as [HTML](https://tc39.es/proposal-error-stack-accessor/).
