@@ -23,7 +23,7 @@ In particular, it contains no net new surface API - only the long-existing `stac
 
 ## Setter
 
-In an ideal world, the setter would not exist, but it is included in this proposal under the assumption that it is required for web comppatibility.
+In an ideal world, the setter would not exist, but it is included in this proposal under the assumption that it is required for web compatibility.
 The current semantics in this proposal of the setter are:
  1. attempting to invoke the function with a non-object, or with no value, will throw
  1. invoking the function with a non-Error receiver will be a noop
