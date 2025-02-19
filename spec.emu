@@ -5,7 +5,7 @@
 <script src="./spec.js"></script>
 <pre class="metadata">
 title: Error Stack Accessor
-stage: -1
+stage: 2
 contributors: Jordan Harband, Mark Miller
 </pre>
 
